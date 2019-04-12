@@ -47,7 +47,7 @@ mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
     db = res;
 
 /**
-*@params {Object} data - document data to be stored in collection
+*@params {Object/[Objects]} data - document data to be stored in collection, here pass a single object for                                      creating a single object or pass an array of objects having a document's                                     data in every object.
 */
 
     db.create("collection_name", data);
@@ -71,11 +71,11 @@ mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
 
 /**
 * All the options follow standard MongoDB syntax
-* @params {Object} query - Standard MongoDB query.
-* @params {Number} limit - If any certain number of documents are needed.
-* @params {Number} offset - To skip some number of documents from beginning.
-* @params {Object} projection - standard MongoDB projections.
-* @params {Object} sort - Any sorting options will go in here.
+* @params {Object} query        - Standard MongoDB query.
+* @params {Number} limit        - If any certain number of documents are needed.
+* @params {Number} offset       - To skip some number of documents from beginning.
+* @params {Object} projection   - standard MongoDB projections.
+* @params {Object} sort         - Any sorting options will go in here.
 */
 
 
@@ -103,11 +103,57 @@ mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
 /**
 * All the options follow standard MongoDB syntax
 * @params {Object} query - Standard MongoDB query.
-* @params {Object} change - standard MongoDB projections.
-* @params {Object} options - Any sorting options will go in here.
+* @params {Object} change - standard change query goes in here. by default $set is there.
+* @params {Object} options - Any other options such as upsert etc goes in here in standard format.
 */
 
     db.update("collection_name", [query], [change], [options]);
+})
+.then(res => {
+    db.close();
+    db = null;
+});
+```
+
+### Delete a Document
+
+```
+const mongo = require("@intugine-technologies/mongodb");
+let db;
+
+mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
+.then(res => {
+    db = res;
+
+/**
+* All the options follow standard MongoDB syntax
+* @params {Object} query - Standard MongoDB query.
+*/
+
+    db.delete("collection_name", query);
+})
+.then(res => {
+    db.close();
+    db = null;
+});
+```
+
+### Count Number of Documents
+
+```
+const mongo = require("@intugine-technologies/mongodb");
+let db;
+
+mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
+.then(res => {
+    db = res;
+
+/**
+* All the options follow standard MongoDB syntax
+* @params {Object} query - Standard MongoDB query.
+*/
+
+    db.count("collection_name", query);
 })
 .then(res => {
     db.close();
