@@ -47,7 +47,7 @@ mongo("MongoDB Connection URI here", "DB_Name here", {useNewUrlParser: true})
     db = res;
 
 /**
-*@params {Object/[Objects]} data - document data to be stored in collection, here pass a single object for                                      creating a single object or pass an array of objects having a document's                                     data in every object.
+*@params {Object/[Objects]} data - document data to be stored in collection, here pass a single object for creating a single object or pass an array of objects having a document's data in every object.
 */
 
     db.create("collection_name", data);
