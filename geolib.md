@@ -4,7 +4,7 @@ A Geo Library for calculating center Coordinates and distance between two coordi
 
 ## Installation
 
-First install Node.js and Mongodb. Then:
+First install Node.js. Then:
 
 ```
 npm i --save @intugine-technologies/geolib
